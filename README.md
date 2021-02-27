@@ -8,4 +8,4 @@ These are in essence just .py files as M5Stack uses micropython for development.
 They do, however, contain some extra information used for creating the block environment in UIFlow.
 We have therefore chosen to upload both a .m5f and a .py version for each file.
 ## Co-Creators
-Hugo Stromberg and Niklas Ku
+Hugo and Niklas
