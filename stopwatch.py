@@ -24,13 +24,13 @@ from numbers import Number #import numbers
 
 def start_stop_pressed(): #when start_stop button is pressed
   global start_stop_count, resetcount, sec #import variable from outside function
-  start_stop_count = (start_stop_count if isinstance(start_stop_count, Number) else 0) + 1 #add 1 to start_stop_count
+  start_stop_count = (start_stop_count if isinstance(start_stop_count, Number) else 0) + 1 #add 1 to start_stop_count when pressed
   pass
 start_stop.pressed(start_stop_pressed) #start_stop button pressed
 
 def reset_pressed(): #when reset button is pressed
   global start_stop_count, resetcount, sec #import variable from outside function
-  resetcount = (resetcount if isinstance(resetcount, Number) else 0) + 1 #reduce by 1 from resetcount when pressed
+  resetcount = (resetcount if isinstance(resetcount, Number) else 0) + 1 #add 1 to resetcount when pressed
   pass
 reset.pressed(reset_pressed) #reset button pressed
 
