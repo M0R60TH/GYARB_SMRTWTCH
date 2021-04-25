@@ -1,13 +1,11 @@
-from m5stack import *
-from m5stack_ui import *
-from uiflow import *
-import wifiCfg
+from m5stack import * #import m5stack library for Core2 module
+from m5stack_ui import * #import m5stack_ui library to be able to send code between UIFlow program and software on Core2  
+from uiflow import * #import the UIFlow library
+import wifiCfg #import wifiCfg library to be able to connect to wifi
 
 screen = M5Screen()
 screen.clean_screen()
 screen.set_screen_bg_color(0xFFFFFF)
-
-
 
 
 wifiCfg.doConnect('SSID', 'PASSWORD')
