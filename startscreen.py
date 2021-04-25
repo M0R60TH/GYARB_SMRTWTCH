@@ -22,24 +22,26 @@ line0 = M5Line(x1=0, y1=25, x2=320, y2=25, color=0x000, width=1, parent=None)
 def To_Menu_pressed(): #function for To_Menu button, code at the moment has no menu but the button is placed for future coding 
   # global params
   pass
-To_Menu.pressed(To_Menu_pressed)
+To_Menu.pressed(To_Menu_pressed) #determine when To_Menu button is pressed
 
-
+#create rectangles and placed them so it creates a battery icon
 lcd.rect(80, 2, 60, 20, color=0x000000)
 lcd.rect(139, 7, 5, 10, color=0x000000)
-while True:
-  time_start.set_text(str(rtc.printRTCtime()))
+while True: #while loop
+  #print the RTC time retreived through internet on both time labels
+  time_start.set_text(str(rtc.printRTCtime())) 
   time_topscreen.set_text(str(rtc.printRTCtime()))
-  if (power.getBatVoltage()) <= 3.65:
+  #the position of the variable displaying the battery status will chnage depending on output becasue of the words' width
+  if (power.getBatVoltage()) <= 3.65: #if battery voltage is at 3.65V or lower then display “CHARGE”
     Battery_percentage.set_text('CHARGE')
     Battery_percentage.set_pos(83, 4)
-  elif (power.getBatVoltage()) <= 3.8:
+  elif (power.getBatVoltage()) <= 3.8: #if battery voltage is at 3.8V or lower then display “LOW”
     Battery_percentage.set_text('LOW')
     Battery_percentage.set_pos(96, 4)
-  elif (power.getBatVoltage()) <= 3.95:
+  elif (power.getBatVoltage()) <= 3.95: #if battery voltage is at 3.95V or lower then display “MED”
     Battery_percentage.set_text('MED')
     Battery_percentage.set_pos(96, 4)
-  elif (power.getBatVoltage()) <= 4.2:
+  elif (power.getBatVoltage()) <= 4.2: #if battery voltage is at 4.2V or lower then display “HIGH”
     Battery_percentage.set_text('HIGH')
     Battery_percentage.set_pos(94, 4)
   wait_ms(2)
