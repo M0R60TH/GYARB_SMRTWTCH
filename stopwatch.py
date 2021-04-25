@@ -1,3 +1,8 @@
+from m5stack import * #import m5stack library for Core2 module
+from m5stack_ui import * #import m5stack_ui library to be able to send code between UIFlow program and software on Core2  
+from uiflow import * #import the UIFlow library
+import time #import library time
+
 start_stop_count = None #create variable start_stop_count and set it to none
 resetcount = None #create variable resetcount and set it to none
 sec = None #create variable sec and set it to none
