@@ -107,27 +107,27 @@ count = 0 #will count the pressing of start button
 vibration_count = 1 #set vibration_count to 1, ready to vibrate when timer is activated and runs out, dismiss buttons will disable the vibrator
 touch_button0.set_hidden(True)  #hide dismiss button
 while True: #while loop
-  if count % 2 == 1:
-    if hours >= 1 and minutes == 0 and seconds == 0:
-      minutes = 59
-      seconds = 60
-      hours = (hours if isinstance(hours, Number) else 0) + -1
-    elif hours >= 1 and minutes >= 1 and seconds == 0:
-      seconds = 60
-      minutes = (minutes if isinstance(minutes, Number) else 0) + -1
-    elif hours == 0 and minutes >= 1 and seconds == 0:
-      minutes = (minutes if isinstance(minutes, Number) else 0) + -1
-      seconds = 60
-    elif hours == 0 and minutes == 0 and seconds == 0:
-      count = (count if isinstance(count, Number) else 0) + 1
-      seconds = (seconds if isinstance(seconds, Number) else 0) + 1
-      if vibration_count % 2 == 1:
-        power.setVibrationEnable(True)
-      vibration_count = (vibration_count if isinstance(vibration_count, Number) else 0) + 1
-      touch_button0.set_hidden(False)
-    seconds = (seconds if isinstance(seconds, Number) else 0) + -1
-    wait(1)
-  h.set_text(str(hours))
-  m.set_text(str(minutes))
-  s.set_text(str(seconds))
+  if count % 2 == 1: #if count variable is odd then start timer
+    if hours >= 1 and minutes == 0 and seconds == 0: #if timer reaches x:00:00 where x is 1 or higher then:
+      minutes = 59 #set minutes to 59
+      seconds = 60 #set seconds to 60
+      hours = (hours if isinstance(hours, Number) else 0) + -1 #reduce hours by 1
+    elif hours >= 1 and minutes >= 1 and seconds == 0: #if timer reaches x:m:00 where x and m is 1 or higher then:
+      seconds = 60 #set seconds to 60
+      minutes = (minutes if isinstance(minutes, Number) else 0) + -1 #recude minutes by 1
+    elif hours == 0 and minutes >= 1 and seconds == 0: #if timer reaches 00:m:00 where m is 1 or higher then:
+      minutes = (minutes if isinstance(minutes, Number) else 0) + -1 #reduce minutes by 1
+      seconds = 60 #set seconds to 60
+    elif hours == 0 and minutes == 0 and seconds == 0: #if timer reaches 00:00:00 then:
+      count = (count if isinstance(count, Number) else 0) + 1 #change variable count by 1
+      seconds = (seconds if isinstance(seconds, Number) else 0) + 1 #increase seconds by 1
+      if vibration_count % 2 == 1: #if vibration_count is odd and timer is at 00:00:00 (after timer was running) then turn on vibration
+        power.setVibrationEnable(True) 
+      vibration_count = (vibration_count if isinstance(vibration_count, Number) else 0) + 1 #chnage vibration_count by 1
+      touch_button0.set_hidden(False) #show dismiss button
+    seconds = (seconds if isinstance(seconds, Number) else 0) + -1 #reduce seconds by 1
+    wait(1) #wait 1 second
+  h.set_text(str(hours)) #display hours figure on label namned hours
+  m.set_text(str(minutes)) #display minutes figure on label namned minutes
+  s.set_text(str(seconds)) #display seconds figure on label namned seconds
   wait_ms(2)
