@@ -3,6 +3,11 @@ from m5stack_ui import * #import m5stack_ui library to be able to send code betw
 from uiflow import * #import the UIFlow library
 import time #import library time
 
+screen = M5Screen() #set screen to the screen on module
+#clean screen and set it to white color
+screen.clean_screen()  
+screen.set_screen_bg_color(0xFFFFFF)
+
 start_stop_count = None #create variable start_stop_count and set it to none
 resetcount = None #create variable resetcount and set it to none
 sec = None #create variable sec and set it to none
