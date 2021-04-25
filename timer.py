@@ -1,21 +1,25 @@
-from m5stack import *
-from m5stack_ui import *
-from uiflow import *
-import time
+from m5stack import * #import m5stack library for Core2 module
+from m5stack_ui import * #import m5stack_ui library to be able to send code between UIFlow program and software on Core2  
+from uiflow import * #import the UIFlow library
+import time #import library time
 
-screen = M5Screen()
-screen.clean_screen()
+screen = M5Screen() #set screen to the screen on module
+#clean screen and set it to white color
+screen.clean_screen()  
 screen.set_screen_bg_color(0xFFFFFF)
 
-count = None
-seconds = None
-hours = None
-minutes = None
-vibration_count = None
+#create variable
+count = None #will be used to count the button pressing
+seconds = None #variable for the seconds
+hours = None #variable for hours
+minutes = None #variable for minutes
+vibration_count = None #will be used to determine when to vibrate
 
+#create  label for seconds, minutes and hours and set their settings
 h = M5Label('00', x=63, y=67, color=0x000, font=FONT_MONT_48, parent=None)
 m = M5Label('00', x=128, y=67, color=0x000, font=FONT_MONT_48, parent=None)
 s = M5Label('00', x=197, y=67, color=0x000, font=FONT_MONT_48, parent=None)
+#add buttons for reducing seconds, minutes, hours, buttons for increasing seconds, minutes, hours, button for start and dismiss. Set their settings
 h_add = M5Btn(text='+', x=59, y=10, w=50, h=50, bg_c=0xFFFFFF, text_c=0x000000, font=FONT_MONT_14, parent=None)
 h_reduce = M5Btn(text='-', x=63, y=111, w=50, h=50, bg_c=0xFFFFFF, text_c=0x000000, font=FONT_MONT_14, parent=None)
 m_add = M5Btn(text='+', x=124, y=10, w=50, h=50, bg_c=0xFFFFFF, text_c=0x000000, font=FONT_MONT_14, parent=None)
@@ -25,16 +29,16 @@ s_red = M5Btn(text='-', x=213, y=119, w=50, h=50, bg_c=0xFFFFFF, text_c=0x000000
 start = M5Btn(text='start', x=130, y=186, w=70, h=30, bg_c=0xFFFFFF, text_c=0x000000, font=FONT_MONT_14, parent=None)
 touch_button0 = M5Btn(text='Button', x=60, y=40, w=200, h=200, bg_c=0xFFFFFF, text_c=0x000000, font=FONT_MONT_14, parent=None)
 
-from numbers import Number
-
-def h_add_pressed():
-  global count, seconds, hours, minutes, vibration_count
-  if hours >= 99:
+from numbers import Number #import library for numbers
+ 
+def h_add_pressed(): #function for increasing value of hours
+  global count, seconds, hours, minutes, vibration_count #import all variable into function
+  if hours >= 99: #if adding on more than 99 hrs then set it to 0 hours instead of 100hrs
     hours = 0
-  else:
+  else: #else increase by 1 as normal
     hours = (hours if isinstance(hours, Number) else 0) + 1
   pass
-h_add.pressed(h_add_pressed)
+h_add.pressed(h_add_pressed) #when the increase hours button in pressed
 
 def m_add_pressed():
   global count, seconds, hours, minutes, vibration_count
