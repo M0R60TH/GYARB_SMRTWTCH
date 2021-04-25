@@ -3,19 +3,23 @@ from m5stack_ui import * #import m5stack_ui library to be able to send code betw
 from uiflow import * #import the UIFlow library
 import wifiCfg #import wifiCfg library to be able to connect to wifi
 
-screen = M5Screen()
-screen.clean_screen()
+screen = M5Screen() #set screen to the screen on module
+#clean screen and set it to white color
+screen.clean_screen()  
 screen.set_screen_bg_color(0xFFFFFF)
 
 
-wifiCfg.doConnect('SSID', 'PASSWORD')
-time_start = M5Label('Retrieving time', x=5, y=47, color=0x000, font=FONT_MONT_26, parent=None)
+wifiCfg.doConnect('SSID', 'PASSWORD') #choose what netowrk to connect to by entering its SSID and password
+#create button namned To_Menu and when pressed it will change to the menu section, set the button settings
 To_Menu = M5Btn(text='Press to continue', x=35, y=140, w=250, h=70, bg_c=0xFFFFFF, text_c=0x000000, font=FONT_MONT_14, parent=None)
+#create labels for display of time on startscreen, top of the screen and the battery status and set their settings
+time_start = M5Label('Retrieving time', x=5, y=47, color=0x000, font=FONT_MONT_26, parent=None)
 time_topscreen = M5Label('Retrieving time', x=155, y=4, color=0x000, font=FONT_MONT_14, parent=None)
 Battery_percentage = M5Label('%', x=83, y=4, color=0x000, font=FONT_MONT_12, parent=None)
+#create line top of screen so it creates a top section for time and battery status
 line0 = M5Line(x1=0, y1=25, x2=320, y2=25, color=0x000, width=1, parent=None)
 
-def To_Menu_pressed():
+def To_Menu_pressed(): #function for To_Menu button, code at the moment has no menu but the button is placed for future coding 
   # global params
   pass
 To_Menu.pressed(To_Menu_pressed)
